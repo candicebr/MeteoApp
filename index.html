@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+    />
+  </head>
+
+  <body classs="antialiased">
+    <nav
+      class="px-4 md:px-6 h-20 flex flex-row justify-between items-center shadow bg-teal-500 text-white"
+    >
+      <div class="flex flex-row items-center">
+        <img
+          class="shadow bg-gray-800 rounded w-10 h-10"
+          src="src/img/02d.png"
+        />
+        <h1 class="hidden md:block mx-4 text-lg font-semibold">Météo</h1>
+      </div>
+      <div class="flex flex-row items-center">
+        <h1>
+          <span class="hidden md:inline-flex">Selectionner la </span> Ville :
+        </h1>
+        <form class="mx-4 md:mx-6">
+          <select
+            class="border-2 border-teal-200 text-black rounded px-1 py-1"
+            id="city"
+            name="nom"
+            size="1"
+          >
+            <option>Chouday</option>
+            <option>Reykjavik</option>
+            <option>Shanghai</option>
+            <option>Le Puy-en-Velay</option>
+            <option>Canberra</option>
+            <option>Matane</option>
+            <option>Londres</option>
+          </select>
+        </form>
+
+        <button
+          id="search"
+          class="border-transparent rounded border md:py-2 md:px-4 md:border-orange-100 text-orange-100"
+        >
+          <img
+            class="md:hidden w-6 h-auto"
+            src="src/img/loupe.png"
+            alt="loupe"
+          /><span class="hidden md:block">Rechercher</span>
+        </button>
+      </div>
+    </nav>
+
+    <div id="slider-container" class="mt-2 md:mt-4">
+      <h3
+        id="bienvenue"
+        class="shadow mt-20 text-center text-4xl font-semibold text-orange-500"
+      >
+        Bienvenue
+      </h3>
+    </div>
+
+    <!--Template Html utilisé pour la présentation du slide (celui-ci est présent sous une autre forme dans le fichier js) Celui-ci permet de voir plus clairement la séparation en div-->
+    <!--
+    <div class=" mt-4">
+      <div id="app" class="text-center mx-3 md:mx-8 bg-orange-200">
+        <div id="box" class="flex flex-col bg-orange-300 md:flex-row md:justify-between items-center mx-6 md:mx-12 my-4 p-6 md:p-12 shadow">
+          <div class="flex flex-col items-start text-white">
+            <div class="City text-xl md:text-2xl">Chouday, FR</div>
+            <div id="info">2020-04-01 15:00:00</div>
+            <div class="flex flex-col items-end">
+              <div class="flex flex-row items-center justify-center mt-2 md:pr-12">
+                <div class="flex flex-col items-end w-48 pr-4 md:pr-6 pb-2 border-r-2 border-white">
+                  <div class="temp text-4xl md:text-6xl flex flex-row">13.93°</div>
+                  <div class="feel md:text-lg">9.91°</div>
+                </div>
+                <div class="icon ml-20 md:ml-4"><img src= "src/img/01d.png" alt="icon Meteo" class="w-32 h-32 object-contain animated fadeIn"/></div>
+              </div>
+              <div id="main" class="font-bold text-2xl md:text-4xl capitalize text-teal-500 md:mt-4">
+                Ciel Dégagé
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-row md:flex-col items-start justify-end mx-6 mt-4 md:mt-0 text-gray-800">
+            <div class="flex flex-col md:flex-row py-2 w-24 md:w-full border-r-2 md:border-b-2 md:border-r-0 border-white">
+              <h3 class="mr-2">
+                Nuage<span class="hidden md:inline-flex">:</span>
+              </h3>
+              <div id="cloud" class="font-semibold">0 %</div>
+            </div>
+
+            <div class="flex flex-col md:flex-row py-2 w-24 md:w-full border-r-2 md:border-b-2 md:border-r-0 border-white">
+              <h3 class="mr-2">
+                Vent<span class="hidden md:inline-flex">:</span>
+              </h3>
+              <div id="wind" class="font-semibold">3.77 m/s</div>
+            </div>
+
+            <div class="flex flex-col md:flex-row py-2 w-24 md:w-full">
+              <h3 class="mr-2">
+                Humiditée<span class="hidden md:inline-flex">:</span>
+              </h3>
+              <div id="humidity" class="font-semibold">50 %</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    <div class="flex flex-row justify-between mx-4 md:mx-12 text-white my-2 md:my-4 text-center">
+      <div class="flex flex-col mx-2 md:mx-4 items-center px-2 md:px-4 py-2 bg-gray-400 rounded">
+        <div class="text-teal-500 w-full rounded-full px-2 md:py-1 md:px-4 border-white border-2">
+          <h3 class="hidden md:inline-flex font-medium">Aujourd'hui</h3>
+          <span class="md:hidden">1</span>
+        </div>
+        <div class="icon transform -my-4 md:-my-2 scale-75 md:scale-100">
+          <img src= "src/img/01d.png" alt="icon Meteo" class="w-32 h-32 object-contain animated fadeIn"/>
+        </div>
+        <div class="temp text-2xl">13.93°</div>
+        <div class="feel">9.91°</div>
+      </div>
+
+      <div class="flex flex-col mx-2 md:mx-4 items-center px-2 md:px-4 py-2 bg-gray-400 rounded">
+        <div class="text-teal-500 w-full rounded-full px-2 md:py-1 md:px-4 border-white border-2">
+          <h3 class="hidden md:inline-flex font-medium">Demain</h3>
+          <span class="md:hidden">2</span>
+        </div>
+        <div class="icon2 transform -my-4 md:-my-2 scale-75 md:scale-100">
+            <img src= "src/img/01d.png" alt="icon Meteo" class="w-32 h-32 object-contain animated fadeIn"/>
+        </div>
+        <div class="temp2 text-2xl">11.14</div>
+        <div class="feel2">8.41</div>
+      </div>
+
+      <div class="flex flex-col mx-2 md:mx-4 items-center px-2 md:px-4 py-2 bg-gray-400 rounded">
+        <div class="text-teal-500 w-full rounded-full px-2 md:py-1 md:px-4 border-white border-2">
+          <h3 class="hidden md:inline-flex font-medium">Après-demain</h3>
+          <span class="md:hidden">3</span>
+        </div>
+        <div class="icon3 transform -my-4 md:-my-2 scale-75 md:scale-100">
+            <img src= "src/img/04d.png" alt="icon Meteo" class="w-32 h-32 object-contain animated fadeIn"/>
+        </div>
+        <div class="temp3 text-2xl">11.32°</div>
+        <div class="feel3">8.37°</div>
+      </div>
+    </div>
+-->
+
+    <script
+      type="text/javascript"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
