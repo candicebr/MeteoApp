@@ -202,7 +202,7 @@ function createSlide(
   const iconImg = document.createElement("img");
   iconImg.src = icon;
   iconImg.alt = "Icon Meteo";
-  iconImg.className = "ml-20 md:ml-4 w-32 h-32 object-contain animated fadeIn";
+  iconImg.className = "ml-16 md:ml-4 w-32 h-32 object-contain animated fadeIn";
 
   //decription météo
   const descriptionDiv = document.createElement("div");
