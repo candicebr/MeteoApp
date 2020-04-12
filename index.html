@@ -35,11 +35,27 @@
         />
         <h1 class="hidden md:block mx-4 text-lg font-semibold">Météo</h1>
       </div>
-      <div class="flex flex-row items-center">
-        <h1>
-          <span class="hidden md:inline-flex">Selectionner la </span> Ville :
-        </h1>
-        <form class="mx-4 md:mx-6">
+
+      <div class="flex flex-row items-center justify-end">
+        <div class="flex flex-col items-center">
+          <div>
+            <label for="color"
+              ><span class="hidden md:inline-flex">Choisissez la </span> Ville
+              :</label
+            >
+            <input
+              id="city"
+              name="nom"
+              placeholder="Londres"
+              type="text"
+              class=" mx-4 border-2 border-teal-200 text-black rounded px-1 py-1"
+            />
+          </div>
+          <p id="error" class="mt-2 text-white text-xs font-normal hidden">
+            Ville non valide, veuillez ressaisir
+          </p>
+        </div>
+        <!--<form class="mx-4 md:mx-6">
           <select
             class="border-2 border-teal-200 text-black rounded px-1 py-1"
             id="city"
@@ -54,7 +70,7 @@
             <option>Matane</option>
             <option>Londres</option>
           </select>
-        </form>
+        </form>-->
 
         <button
           id="search"
@@ -70,12 +86,14 @@
     </nav>
 
     <div id="slider-container" class="mt-2 md:mt-4">
-      <h3
-        id="bienvenue"
-        class="shadow mt-20 text-center text-4xl font-semibold text-orange-500"
-      >
-        Bienvenue
-      </h3>
+      <div id="bienvenue" class="shadow mt-20 text-center">
+        <h3 class=" text-4xl font-semibold text-orange-500">
+          Bienvenue
+        </h3>
+        <h4 class="text-2xl font-semibold text-gray-800">
+          Choisissez une ville
+        </h4>
+      </div>
     </div>
 
     <!--Template Html utilisé pour la présentation du slide (celui-ci est présent sous une autre forme dans le fichier js) Celui-ci permet de voir plus clairement la séparation en div-->
