@@ -2,8 +2,15 @@ const button = document.querySelector("#search");
 
 button.addEventListener("click", function(e) {
   const city = document.querySelector("#city").value;
-  button.classList.add("cursor-wait");
-  grabMeteo(city).then(insertMeteo);
+
+  if (!city) {
+    document.querySelector("#error").classList.remove("hidden");
+    return;
+  } else {
+    document.querySelector("#error").classList.add("hidden");
+    button.classList.add("cursor-wait");
+    grabMeteo(city).then(insertMeteo);
+  }
 });
 
 function grabMeteo(city) {
@@ -16,7 +23,13 @@ function grabMeteo(city) {
 }
 
 function insertMeteo(meteoArray) {
-  console.log(meteoArray["list"]);
+  console.log(meteoArray);
+
+  if (meteoArray["message"] === "city not found") {
+    document.querySelector("#error").classList.remove("hidden");
+    button.classList.remove("cursor-wait");
+    return;
+  }
 
   //tableau des différents id correspondant à la méteo de chaque jour à la même heure
   const tabId = [0, 8, 16];
